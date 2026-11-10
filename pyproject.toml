@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "reportspec"
+version = "0.1.0"
+description = "One JSON spec to a PDF and an Excel report. Arabic/RTL-ready, fonts bundled."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "weasyprint>=62",
+    "xlsxwriter>=3.1",
+    "nuqta @ git+https://github.com/mazin01/nuqta",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "pypdf>=4", "openpyxl>=3.1", "pandas>=2"]
+
+[project.scripts]
+reportspec = "reportspec.__main__:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["reportspec"]
